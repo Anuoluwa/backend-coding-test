@@ -7,8 +7,99 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
 module.exports = (db) => {
+    /**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Ride:
+ *       type: object
+ *       required:
+ *         - start_lat
+ *         - end_lat
+ *         - start_long
+ *         - end_long
+ *         - rider_name
+ *         - driver_name
+ *         - driver_vehicle
+ *       properties:
+ *         start_lat:
+ *           type: string
+ *           description: The latitude coordinate at start of the trip
+ *         end_lat:
+ *           type: string
+ *           description: The latitude coordinate at end of the trip
+ *         start_long:
+ *           type: string
+ *           description: The longitude coordinate at start of the trip
+ *         end_long:
+ *           type: string
+ *           description: The longitude coordinate at end of the trip
+ *         rider_name:
+ *           type: string
+ *           description: The rider(customer) name
+ *         driver_name:
+ *           type: string
+ *           description: The driver name
+ *         driver_vehicle:
+ *           type: string
+ *           description: The driver vehicle details
+ *       example:
+ *         start_lat: 34.5
+ *         end_lat: 35.4
+ *         start_long: 78.9
+ *         end_long: 78.6
+ *         rider_name: John Doe
+ *         driver_name:  Jane Doe
+ *         driver_vehicle: Toyota Lexus 350 Black NY 45 YU
+ */
+
+ /**
+  * @swagger
+  * tags:
+  *   name: Rides
+  *   description: The e-hailing API
+  */
+
+/**
+ * @swagger
+ * /health:
+ *   get:
+ *     summary: Returns api server health status
+ *     tags: [Rides]
+ *     responses:
+ *       200:
+ *         description: Checks if server is running
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: string
+ */
+
     app.get('/health', (req, res) => res.send('Healthy'));
 
+
+
+/**
+ * @swagger
+ * /rides:
+ *   post:
+ *     summary: Create a new ride
+ *     tags: [Rides]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Ride'
+ *     responses:
+ *       200:
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Ride'
+ *       500:
+ *         description: Some server error
+ */
     app.post('/rides', jsonParser, (req, res) => {
         const startLatitude = Number(req.body.start_lat);
         const startLongitude = Number(req.body.start_long);
@@ -76,6 +167,28 @@ module.exports = (db) => {
         });
     });
 
+    /**
+ * @swagger
+ * /rides:
+ *   get:
+ *     summary: Returns the list of all the rides
+ *     tags: [Rides]
+ *     responses:
+ *       200:
+ *         description: The list of the rides
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Ride'
+ *       404:
+ *         error: RIDES_NOT_FOUND_ERROR
+ *         description: Could not find any rides
+ *       500:
+ *         error: SERVER_ERROR
+ *         description: Unknown error
+ */
     app.get('/rides', (req, res) => {
         db.all('SELECT * FROM Rides', function (err, rows) {
             if (err) {
@@ -96,6 +209,35 @@ module.exports = (db) => {
         });
     });
 
+
+
+    /**
+ * @swagger
+ * /rides/{id}:
+ *   get:
+ *     summary: Get the ride by id
+ *     tags: [Rides]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The ride id
+ *     responses:
+ *       200:
+ *         description: The ride description by id
+ *         contents:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Ride'
+ *       404:
+ *         error: RIDES_NOT_FOUND_ERROR
+ *         description: Could not find any rides
+ *       500:
+ *         error_code: SERVER_ERROR
+ *         message: Unknown error
+ */
     app.get('/rides/:id', (req, res) => {
         db.all(`SELECT * FROM Rides WHERE rideID='${req.params.id}'`, function (err, rows) {
             if (err) {
