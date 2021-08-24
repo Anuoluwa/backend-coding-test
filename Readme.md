@@ -24,12 +24,12 @@ Below will be your set of tasks to accomplish. Please work on each of these task
 
 ### Documentation
 
-Please deliver documentation of the server that clearly explains the goals of this project and clarifies the API response that is expected.
+- [x] Please deliver documentation of the server that clearly explains the goals of this project and clarifies the API response that is expected.
 
 #### Success Criteria
 
-1. A pull request against `master` of your fork with a clear description of the change and purpose and merge it
-3. **[BONUS]** Create an easy way to deploy and view the documentation in a web format and include instructions to do so
+1. - [x] A pull request against `master` of your fork with a clear description of the change and purpose and merge it
+3.  - [x] **[BONUS]** Create an easy way to deploy and view the documentation in a web format and include instructions to do so
 
 ### Implement Tooling
 
