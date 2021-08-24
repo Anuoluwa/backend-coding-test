@@ -1,7 +1,11 @@
 'use strict';
 
 const express = require('express');
+const swaggerUI = require('swagger-ui-express');
+const swaggerJSDoc = require('swagger-jsdoc');
+
 const app = express();
+
 const port = 8010;
 
 const bodyParser = require('body-parser');
@@ -12,10 +16,31 @@ const db = new sqlite3.Database(':memory:');
 
 const buildSchemas = require('./src/schemas');
 
+const options = {
+    definition: {
+      openapi: "3.0.0",
+      info: {
+        title: "A ride API",
+        version: "1.0.0",
+        description: "A documentation for  rides API"
+      },
+      servers: [
+        {
+          url: "http://localhost:8010"
+        }
+      ]
+    },
+    apis: ["./src/app.js"]
+  };
+
+  const specs = swaggerJSDoc(options);
+
 db.serialize(() => {
     buildSchemas(db);
 
     const app = require('./src/app')(db);
+
+    app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
     app.listen(port, () => console.log(`App started and listening on port ${port}`));
 });
