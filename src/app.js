@@ -57,7 +57,7 @@ module.exports = (db) => {
   * @swagger
   * tags:
   *   name: Rides
-  *   description: The e-hailing API
+  *   description: The e-hailing API(Ride API)
   */
 
 /**

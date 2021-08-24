@@ -22,7 +22,7 @@ const options = {
       info: {
         title: "A ride API",
         version: "1.0.0",
-        description: "A documentation for  rides API"
+        description: "A simple documentation for  e-hailing(Rides API)"
       },
       servers: [
         {
