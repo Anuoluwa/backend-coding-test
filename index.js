@@ -20,7 +20,7 @@ const options = {
     definition: {
       openapi: "3.0.0",
       info: {
-        title: "A ride API",
+        title: "Xendit Rides API",
         version: "1.0.0",
         description: "A simple documentation for  e-hailing(Rides API)"
       },

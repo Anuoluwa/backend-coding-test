@@ -7,8 +7,11 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "mocha tests",
-    "start": "node index.js"
+    "test": "nyc --reporter=html --reporter=text --reporter=lcov mocha tests",
+    "start": "node index.js",
+    "dev": "nodemon --exec node index.js",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "coverage": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=lcov"
   },
   "keywords": [
     "Xendit"
@@ -24,6 +27,7 @@
   },
   "devDependencies": {
     "mocha": "^6.1.4",
+    "nodemon": "^2.0.12",
     "supertest": "^4.0.2"
   }
 }
