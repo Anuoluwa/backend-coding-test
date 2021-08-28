@@ -4,22 +4,21 @@ node_js:
 
 env:
   global:
-  # Code Climate Reporter gotten from code climate
     - CC_TEST_REPORTER_ID=b121a3b54fcfb8727dc8b5b28172bca0a01446b415249f8b4450509082891ab3
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
-  
+
 cache:
   directories: [node_modules]
 
-script:  
+script:
   - npm install
   - npm test
 
-after_script:  
+after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 after_success:
