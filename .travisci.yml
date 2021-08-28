@@ -1,7 +1,8 @@
 language: node_js
 node_js:
   - "10.24"
-
+services:
+  - sqlite3
 env:
   global:
     - CC_TEST_REPORTER_ID=b121a3b54fcfb8727dc8b5b28172bca0a01446b415249f8b4450509082891ab3
