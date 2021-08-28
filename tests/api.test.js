@@ -156,9 +156,9 @@ describe("API tests", () => {
         .set("Accept", "application/json")
         .expect("Content-Type", /json/)
         .expect((res) => {
-          if(res.body.length === 0) {
-            res.body.error_code = 'RIDES_NOT_FOUND_ERROR';
-            res.body.message = 'Could not find any rides';
+          if (res.body.length === 0) {
+            res.body.error_code = "RIDES_NOT_FOUND_ERROR";
+            res.body.message = "Could not find any rides";
           }
         })
         .end((err) => {
@@ -195,8 +195,8 @@ describe("API tests", () => {
         .set("Accept", "application/json")
         .expect("Content-Type", /json/)
         .expect((res) => {
-          res.body.error_code = 'RIDES_NOT_FOUND_ERROR';
-          res.body.message = 'Could not find any rides';
+          res.body.error_code = "RIDES_NOT_FOUND_ERROR";
+          res.body.message = "Could not find any rides";
         })
         .end((err) => {
           if (err) return done(err);
