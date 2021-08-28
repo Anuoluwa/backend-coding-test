@@ -37,23 +37,24 @@ Below will be your set of tasks to accomplish. Please work on each of these task
 
 Please implement the following tooling:
 
-1. `eslint` - for linting
-2. `nyc` - for code coverage
-3. `pre-push` - for git pre push hook running tests
-4. `winston` - for logging
+1.  - [x] `eslint` - for linting
+2.  - [x]  `nyc` - for code coverage
+3.  - [x]  `pre-push` - for git pre push hook running tests
+4.  - [x]  `winston` - for logging
 
 #### Success Criteria
 
-1. Create a pull request against `master` of your fork with the new tooling and merge it
-   1. `eslint` should have an opinionated format
-   2. `nyc` should aim for test coverage of `80%` across lines, statements, and branches
-   3. `pre-push` should run the tests before allowing pushing using `git`
-   4. `winston` should be used to replace console logs and all errors should be logged as well. Logs should go to disk.
-2. Ensure that tooling is connected to `npm test`
-3. Create a separate pull request against `master` of your fork with the linter fixes and merge it
-4. Create a separate pull request against `master` of your fork to increase code coverage to acceptable thresholds and merge it
-5. **[BONUS]** Add integration to CI such as Travis or Circle
-6. **[BONUS]** Add Typescript support
+1.  - [x]  Create a pull request against `master` of your fork with the new tooling and merge it
+   1.  - [x]  `eslint` should have an opinionated format
+   2.  - [x]  `nyc` should aim for test coverage of `80%` across lines, statements, and branches
+   3.  - [x]  `pre-push` should run the tests before allowing pushing using `git`
+   4.  - [x]  `winston` should be used to replace console logs and all errors should be logged as well. Logs should go to disk.
+2. - [x]  Ensure that tooling is connected to `npm test`
+3. - [x]  Create a separate pull request against `master` of your fork with the linter fixes and merge it
+4. - []  Create a separate pull request against `master` of your fork to increase code coverage to acceptable thresholds and merge it
+5. - [x]  **[BONUS]** Add integration to CI such as Travis or Circle
+6.  - [x]  **[BONUS]** Add Typescript support
+7.  - [x]  **[BONUS]** Add badges for TravisCI, Coveralls and Code Climate
 
 ### Implement Pagination
 
