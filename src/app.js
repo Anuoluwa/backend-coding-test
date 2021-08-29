@@ -195,10 +195,23 @@ module.exports = (db) => {
 
   /**
    * @swagger
-   * /rides:
+   * /rides?page={page}&limit={limit}:
    *   get:
    *     summary: Returns the list of all the rides
    *     tags: [Rides]
+   *     parameters:
+   *       - in: query
+   *         name: page
+   *         schema:
+   *          type: string
+   *         required: true
+   *         description: The page number for pagination
+   *       - in: query
+   *         name: limit
+   *         schema:
+   *          type: string
+   *         required: true
+   *         description: The number of rows per page
    *     responses:
    *       200:
    *         description: The list of the rides
@@ -216,7 +229,10 @@ module.exports = (db) => {
    *         description: Unknown error
    */
   app.get("/rides", (req, res) => {
-    db.all("SELECT * FROM Rides", (err, rows) => {
+    const { page } = req.query;
+    const { limit } = req.query;
+    const offset = (+page - 1) * limit;
+    db.all(`SELECT * FROM Rides LIMIT ${limit} OFFSET ${offset}`, (err, rows) => {
       if (err) {
         return res.send({
           error_code: "SERVER_ERROR",
