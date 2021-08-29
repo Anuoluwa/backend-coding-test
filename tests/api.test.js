@@ -133,38 +133,27 @@ describe("API tests", () => {
     it("responds with json", (done) => {
       request(app)
         .get("/rides")
-        .set("Accept", "application/json")
         .expect("Content-Type", /json/)
         .expect(200, done);
     });
     it("should return the value of 1 for the numbers of rows in the response object", (done) => {
       request(app)
         .get(`/rides/${1}`)
-        .set("Accept", "application/json")
-        .expect("Content-Type", /json/)
-        .expect((res) => {
-          res.body.length = 1;
-        })
-        .end((err) => {
-          if (err) return done(err);
-          done();
+        .expect(200)
+        .then((res) => {
+          expect(res.body.length).toBe(1);
         });
+      done();
     });
     it("should return the value of 1 for the numbers of rows in the response object", (done) => {
       request(app)
         .get(`/rides/${100}`)
-        .set("Accept", "application/json")
-        .expect("Content-Type", /json/)
-        .expect((res) => {
-          if (res.body.length === 0) {
-            res.body.error_code = "RIDES_NOT_FOUND_ERROR";
-            res.body.message = "Could not find any rides";
-          }
-        })
-        .end((err) => {
-          if (err) return done(err);
-          done();
+        .expect(200)
+        .then((res) => {
+          expect(res.body.error_code).toBe("RIDES_NOT_FOUND_ERROR");
+          expect(es.body.message).toBe("Could not find any rides");
         });
+      done();
     });
   });
 
@@ -181,13 +170,11 @@ describe("API tests", () => {
         .get(`/rides/${1}`)
         .set("Accept", "application/json")
         .expect("Content-Type", /json/)
-        .expect((res) => {
-          res.body.length = 1;
-        })
-        .end((err) => {
-          if (err) return done(err);
-          done();
+        .expect(200)
+        .then((res) => {
+          expect(res.body.length).toBe(1);
         });
+      done();
     });
     it("should return the value of 1 for the numbers of rows in the response object", (done) => {
       request(app)
@@ -202,6 +189,17 @@ describe("API tests", () => {
           if (err) return done(err);
           done();
         });
+    });
+    it("should return error if a string is parsed as rideID", (done) => {
+      request(app)
+        .get("/rides/kkjll")
+        .set("Accept", "application/json")
+        .expect("Content-Type", /json/)
+        .then((res) => {
+          expect(res.body.error_code).toBe("RIDES_NOT_FOUND_ERROR");
+          expect(es.body.message).toBe("Could not find any rides");
+        });
+      done();
     });
   });
 });
