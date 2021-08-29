@@ -9,7 +9,7 @@ before_install:
 install: npm install
 
 services:
-  - sqlite3
+  -  sqlite3
 
 cache:
   directories: [node_modules]
