@@ -52,7 +52,7 @@ Please implement the following tooling:
    4.  - [x]  `winston` should be used to replace console logs and all errors should be logged as well. Logs should go to disk.
 2. - [x]  Ensure that tooling is connected to `npm test`
 3. - [x]  Create a separate pull request against `master` of your fork with the linter fixes and merge it
-4. - []  Create a separate pull request against `master` of your fork to increase code coverage to acceptable thresholds and merge it
+4. - [x]  Create a separate pull request against `master` of your fork to increase code coverage to acceptable thresholds and merge it
 5. - [x]  **[BONUS]** Add integration to CI such as Travis or Circle
 6.  - [x]  **[BONUS]** Add Typescript support
 7.  - [x]  **[BONUS]** Add badges for TravisCI, Coveralls and Code Climate
@@ -61,10 +61,10 @@ Please implement the following tooling:
 
 Please implement pagination to retrieve pages of the resource `rides`.
 
-1. Create a pull request against `master` with your changes to the `GET /rides` endpoint to support pagination including:
-   1. Code changes
-   2. Tests
-   3. Documentation
+1. - [x] Create a pull request against `master` with your changes to the `GET /rides` endpoint to support pagination including:
+   1. - [x] Code changes
+   2. - [x] Tests
+   3. - [x] Documentation
 2. Merge the pull request
 
 ### Refactoring
