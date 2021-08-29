@@ -1,6 +1,7 @@
 # Xendit Coding Exercise
 
- [![Coverage Status](https://coveralls.io/repos/github/Anuoluwa/backend-coding-test/badge.svg?branch=task-2-tooling)](https://coveralls.io/github/Anuoluwa/backend-coding-test?branch=task-2-tooling) [![Test Coverage](https://api.codeclimate.com/v1/badges/5f741c02feabcd0ba3fe/test_coverage)](https://codeclimate.com/github/Anuoluwa/backend-coding-test/test_coverage)  [![Test Coverage](https://api.codeclimate.com/v1/badges/5f741c02feabcd0ba3fe/test_coverage)](https://codeclimate.com/github/Anuoluwa/backend-coding-test/test_coverage)
+[![Build Status](https://app.travis-ci.com/Anuoluwa/backend-coding-test.svg?branch=master)](https://app.travis-ci.com/Anuoluwa/backend-coding-test) [![Coverage Status](https://coveralls.io/repos/github/Anuoluwa/backend-coding-test/badge.svg?branch=master)](https://coveralls.io/github/Anuoluwa/backend-coding-test?branch=master)
+ 
 
 The goal of these exercises are to assess your proficiency in software engineering that is related to the daily work that we do at Xendit. Please follow the instructions below to complete the assessment.
 
