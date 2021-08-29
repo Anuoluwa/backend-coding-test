@@ -1,30 +1,19 @@
 language: node_js
+
 node_js:
-  - "10.24"
+  - "10"
+
+before_install:
+  - npm i -g npm@6
+
+install: npm install
+
 services:
   - sqlite3
-env:
-  global:
-    - CC_TEST_REPORTER_ID=b121a3b54fcfb8727dc8b5b28172bca0a01446b415249f8b4450509082891ab3
-
-before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
 
 cache:
   directories: [node_modules]
 
-script:
-  - npm install
-  - npm test
+script: npm test
 
-after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-
-after_success:
-  - npm run coverage
-  - npm run coveralls
-
-notifications:
-  email: false
+after_success: npm run coverage
