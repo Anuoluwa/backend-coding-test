@@ -1,12 +1,12 @@
 const request = require("supertest");
 const sqlite3 = require("sqlite3").verbose();
-const assert = require("assert");
 const { expect } = require("chai");
 
 const db = new sqlite3.Database(":memory:");
 
-const app = require("../src/app")(db);
-const buildSchemas = require("../src/schemas");
+const app = require("../../src/app");
+
+const buildSchemas = require("../config/schemas.test");
 
 describe("API tests", () => {
   before((done) => {
@@ -21,14 +21,6 @@ describe("API tests", () => {
     });
   });
 
-  describe("GET /health", () => {
-    it("should return health", (done) => {
-      request(app)
-        .get("/health")
-        .expect("Content-Type", /text/)
-        .expect(200, done);
-    });
-  });
   describe("POST /rides, to create a new ride", () => {
     describe("POST /rides", () => {
       it("returns error when start or end latitude is not between -90 or 90", (done) => {
