@@ -2,17 +2,14 @@ const express = require("express");
 const swaggerUI = require("swagger-ui-express");
 const swaggerJSDoc = require("swagger-jsdoc");
 
+const riderRouter = require("./src/rides/ride.router");
+
 const app = express();
+const port = process.env.PORT || 8010;
 
-const port = 8010;
-
-const bodyParser = require("body-parser");
-
-const jsonParser = bodyParser.json();
-
-const sqlite3 = require("sqlite3").verbose();
-
-const db = new sqlite3.Database(":memory:");
+app.disable("x-powered-by");
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 const buildSchemas = require("./src/schemas");
 const log = require("./logger/config/winston.config");
@@ -33,15 +30,23 @@ const options = {
   },
   apis: ["./src/app.js"],
 };
-
 const specs = swaggerJSDoc(options);
+/**
+   * @swagger
+   * /health:
+   *   get:
+   *     summary: Returns api server health status
+   *     tags: [Rides]
+   *     responses:
+   *       200:
+   *         description: Checks if server is running
+   *         content:
+   *           application/json:
+   *             schema:
+   *               type: string
+   */
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
+app.get("/health", (req, res) => res.send("Healthy"));
+app.use("/rides", riderRouter);
 
-db.serialize(() => {
-  buildSchemas(db);
-
-  const app = require("./src/app")(db);
-
-  app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
-
-  app.listen(port, () => log.info(`App started and listening on port ${port}`));
-});
+app.listen(port, () => log.info(`App started and listening on port ${port}`));
