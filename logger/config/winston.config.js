@@ -50,9 +50,9 @@ const custom = {
   },
 };
 
-const myFormat = printf(
-  ({ message, timestamp, label }) => `${timestamp} ,${label} || '', ${message}`,
-);
+const myFormat = printf(({
+  level, message, label, timestamp,
+}) => `$[${level}] [${timestamp}-${label}] ${message.toLowerCase()}`);
 
 const loggerOptions = {
   format: combine(

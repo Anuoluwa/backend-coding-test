@@ -1,6 +1,6 @@
 # Xendit Coding Exercise
 
-[![Build Status](https://app.travis-ci.com/Anuoluwa/backend-coding-test.svg?branch=master)](https://app.travis-ci.com/Anuoluwa/backend-coding-test)  [![Coverage Status](https://coveralls.io/repos/github/Anuoluwa/backend-coding-test/badge.svg?branch=master)](https://coveralls.io/github/Anuoluwa/backend-coding-test?branch=master)
+[![Build Status](https://app.travis-ci.com/Anuoluwa/backend-coding-test.svg?branch=master)](https://app.travis-ci.com/Anuoluwa/backend-coding-test)  [![Coverage Status](https://coveralls.io/repos/github/Anuoluwa/backend-coding-test/badge.svg?branch=master&service=github)](https://coveralls.io/github/Anuoluwa/backend-coding-test?branch=master)
  
 
 The goal of these exercises are to assess your proficiency in software engineering that is related to the daily work that we do at Xendit. Please follow the instructions below to complete the assessment.
@@ -71,9 +71,9 @@ Please implement pagination to retrieve pages of the resource `rides`.
 
 Please implement the following refactors of the code:
 
-1. Convert callback style code to use `async/await`
-2. Reduce complexity at top level control flow logic and move logic down and test independently
-3. **[BONUS]** Split between functional and imperative function and test independently
+1. - [x] Convert callback style code to use `async/await`
+2. - [x] Reduce complexity at top level control flow logic and move logic down and test independently
+3. - [x] **[BONUS]** Split between functional and imperative function and test independently
 
 #### Success Criteria
 

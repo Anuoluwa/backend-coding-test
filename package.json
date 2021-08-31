@@ -2,14 +2,14 @@
   "name": "backend-coding-test",
   "version": "1.0.0",
   "description": "A coding assessment for Xendit backend interviews",
-  "main": "index.js",
+  "main": ".src/app.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "test": "nyc --reporter=html --reporter=text --reporter=lcov mocha tests",
-    "start": "node index.js",
-    "dev": "nodemon --exec node index.js",
+    "test": "nyc --reporter=html --reporter=text --reporter=lcov mocha './tests/**/*.test.js'  --exit",
+    "start": "node ./src/app.js",
+    "dev": "nodemon --exec node ./src/app.js",
     "lint": "eslint \"./**/*.js\"",
     "lint-fix": "eslint --fix './**/*.js'",
     "prettier": "prettier --write '**/*.{js,json}' '!node_modules/**'",
@@ -29,6 +29,7 @@
     "coveralls": "^3.1.1",
     "express": "^4.16.4",
     "nyc": "^15.1.0",
+    "sqlite-async": "^1.1.1",
     "sqlite3": "^4.1.1",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.1.6",
