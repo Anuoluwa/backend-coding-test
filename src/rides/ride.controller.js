@@ -1,6 +1,6 @@
-const { dbRunAsync, dbAllAsync } = require("./ride.service");
+const { dbRunAsync, dbAllAsync, prepareStmt } = require("./ride.service");
 const log = require("../../logger/config/winston.config");
-
+const db = require("../../config/dbConfig");
 /**
    * @swagger
    * components:
@@ -86,10 +86,11 @@ const createOne = () => async (req, res) => {
     req.body.driver_name,
     req.body.driver_vehicle,
   ];
-
+  // console.log(...values, 'lmiioo');
   try {
-    const query = `INSERT INTO Rides(startLat, startLong, endLat, endLong, riderName, driverName, driverVehicle) VALUES (${Number(req.body.start_lat)}, ${Number(req.body.start_long)}, ${Number(req.body.end_lat)}, ${Number(req.body.end_long)}, '${req.body.rider_name}', '${req.body.driver_name}', '${req.body.driver_vehicle}');`;
-    await dbRunAsync(query);
+    const stmt = db.prepare("INSERT INTO Rides(startLat, startLong, endLat, endLong, riderName, driverName, driverVehicle) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    stmt.run(...values);
+    stmt.finalize();
     try {
       const query = "SELECT * FROM Rides ORDER BY rowid DESC LIMIT 1;";
       const rows = await dbAllAsync(query);
