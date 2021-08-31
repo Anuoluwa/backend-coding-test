@@ -1,6 +1,6 @@
 # Xendit Coding Exercise
 
-[![Build Status](https://app.travis-ci.com/Anuoluwa/backend-coding-test.svg?branch=master)](https://app.travis-ci.com/Anuoluwa/backend-coding-test)  [![Coverage Status](https://coveralls.io/repos/github/Anuoluwa/backend-coding-test/badge.svg?branch=master)](https://coveralls.io/github/Anuoluwa/backend-coding-test?branch=master)
+[![Build Status](https://app.travis-ci.com/Anuoluwa/backend-coding-test.svg?branch=master)](https://app.travis-ci.com/Anuoluwa/backend-coding-test)  [![Coverage Status](https://coveralls.io/repos/github/Anuoluwa/backend-coding-test/badge.svg?branch=master&service=github)](https://coveralls.io/github/Anuoluwa/backend-coding-test?branch=master)
  
 
 The goal of these exercises are to assess your proficiency in software engineering that is related to the daily work that we do at Xendit. Please follow the instructions below to complete the assessment.
