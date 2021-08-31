@@ -71,9 +71,9 @@ Please implement pagination to retrieve pages of the resource `rides`.
 
 Please implement the following refactors of the code:
 
-1. Convert callback style code to use `async/await`
-2. Reduce complexity at top level control flow logic and move logic down and test independently
-3. **[BONUS]** Split between functional and imperative function and test independently
+1. - [x] Convert callback style code to use `async/await`
+2. - [x] Reduce complexity at top level control flow logic and move logic down and test independently
+3. - [x] **[BONUS]** Split between functional and imperative function and test independently
 
 #### Success Criteria
 
