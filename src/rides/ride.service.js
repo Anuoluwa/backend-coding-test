@@ -17,3 +17,5 @@ exports.dbAllAsync = (sql) => new Promise((resolve, reject) => {
     resolve(row);
   });
 });
+
+// exports.prepareStmt = (queryString) => db.prepare(queryString);
