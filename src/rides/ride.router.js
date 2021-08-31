@@ -1,12 +1,13 @@
 const express = require("express");
 
 const controllers = require("./ride.controller");
+const middleware = require("./ride.middleware");
 
 const router = express.Router();
 
 router
   .route("/")
-  .post(controllers.createOne)
+  .post(middleware.validateData, controllers.createOne)
   .get(controllers.getRides);
 
 router

@@ -56,4 +56,6 @@ const rideValidation = (req, res, next) => {
   next();
 };
 
-module.exports = rideValidation;
+module.exports = ({
+  validateData: rideValidation,
+});
