@@ -1,3 +1,5 @@
+const log = require("../../logger/config/winston.config");
+
 const rideValidation = (req, res, next) => {
   const startLatitude = Number(req.body.start_lat);
   const startLongitude = Number(req.body.start_long);
