@@ -1,0 +1,34 @@
+config:
+  target: "http://localhost:8010/"
+  ensure:
+    p99: 50
+  phases:
+    - duration: 30
+      arrivalRate: 100
+
+scenarios:
+  - name: "Create/book a new ride"
+    flow:
+      - post:
+          url: "/rides"
+          json:
+            startLat: "89"
+            startLong: "177"
+            endLat: "70"
+            endLong: "178"
+            riderName: "John Jane"
+            driverName: "John Doe"
+            driverVehicle: "NY 88 BY"
+
+  - name: "Get rides with pagination"
+    flow:
+      - get:
+          url: "/rides"
+          qs:
+            page: 1
+            page_size: 10
+
+  - name: "Get a rides with id"
+    flow:
+      - get:
+          url: "/rides/1"

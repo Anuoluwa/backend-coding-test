@@ -15,7 +15,11 @@
     "prettier": "prettier --write '**/*.{js,json}' '!node_modules/**'",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "coverage": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=lcov",
-    "pre-push": "npm run lint-fix && npm test"
+    "pre-push": "npm run lint-fix && npm test",
+    "start-forever": "forever start ./src/app.js",
+    "stop-forever": "forever stop ./src/app.js",
+    "test:load": "npm run start-forever && artillery run --output report.json testing.yml",
+    "test:load:report": "artillery report --output report.html report.json"
   },
   "keywords": [
     "Xendit"
@@ -28,6 +32,7 @@
     "chai": "^4.3.4",
     "coveralls": "^3.1.1",
     "express": "^4.16.4",
+    "forever": "^4.0.1",
     "nyc": "^15.1.0",
     "sqlite-async": "^1.1.1",
     "sqlite3": "^4.1.1",
@@ -39,6 +44,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.29.3",
     "@typescript-eslint/parser": "^4.29.3",
+    "artillery": "^1.7.8",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.3.0",
