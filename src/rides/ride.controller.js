@@ -86,7 +86,6 @@ const createOne = () => async (req, res) => {
     req.body.driver_name,
     req.body.driver_vehicle,
   ];
-  // console.log(...values, 'lmiioo');
   try {
     const stmt = db.prepare("INSERT INTO Rides(startLat, startLong, endLat, endLong, riderName, driverName, driverVehicle) VALUES (?, ?, ?, ?, ?, ?, ?)");
     stmt.run(...values);
